@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1027970034244",
+    "firebase_url": "https://bittext-82a88.firebaseio.com",
+    "project_id": "bittext-82a88",
+    "storage_bucket": "bittext-82a88.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027970034244:android:c102bb1c8d6717c3",
+        "android_client_info": {
+          "package_name": "oreo.com.bittext"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027970034244-tl13co849g16vfm37luj90dvvha7lodr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbbZvcdcGIfEXETt6vAlJ99BEDzaQPSak"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
