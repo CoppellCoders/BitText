@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +33,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -53,7 +56,7 @@ public class LoginActivity extends Activity implements View.OnClickListener{
 
     GoogleSignInClient mGoogleSignInClient;
     private static int RC_SIGN_IN = 100;
-
+    private VideoView mVideoView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         System.out.println("In On Create");
@@ -65,6 +68,27 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         System.out.println("Out Of Create");
+
+
+        mVideoView = (VideoView) findViewById(R.id.videoView3);
+        mVideoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.login_background));
+        mVideoView.start();
+
+        mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener()
+                                         {
+                                             @Override
+                                             public void onPrepared(MediaPlayer mediaPlayer){
+                                                 mediaPlayer.setLooping(true);
+                                             }
+                                         }
+        );
+        Button about = (Button)findViewById(R.id.about);
+        about.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(LoginActivity.this, "Blockchain based messaging platform", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     @Override
     public void onClick(View v) {
@@ -73,6 +97,8 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                 signIn();
                 break;
             // ...
+
+
         }
     }
     private void signIn() {
@@ -116,5 +142,6 @@ public class LoginActivity extends Activity implements View.OnClickListener{
            // updateUI(null);
         }
     }
+
 }
 
